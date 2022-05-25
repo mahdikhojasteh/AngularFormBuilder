@@ -36,7 +36,7 @@ export class FormBuilderComponent implements OnInit {
           _formModel.subscribe({
             next: (data) => {
               if (data) {
-                this.formModel = data;
+                this.formModel = JSON.parse(JSON.stringify(data));
               }
             },
           });

@@ -153,6 +153,7 @@
 
 <app-save-form-dialog
   *ngIf="isForSave"
+  [formName]="formModel.form_name"
   (closeDialog)="isForSave = false"
   (closeDialogWithData)="saveAndRedirect($event)"
 >

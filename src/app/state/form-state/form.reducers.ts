@@ -19,7 +19,12 @@ export const formReducer = createReducer(
 
   on(addForm, (entries, formModel) => {
     const entriesClone: FormModel[] = JSON.parse(JSON.stringify(entries));
-    entriesClone.push(formModel);
+    const found = entriesClone.find((e) => e.id == formModel.id);
+    if (found) {
+      entriesClone.splice(entriesClone.indexOf(found), 1, formModel);
+    } else {
+      entriesClone.push(formModel);
+    }
     return entriesClone;
   })
 );

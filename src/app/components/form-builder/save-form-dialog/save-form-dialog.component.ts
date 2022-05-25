@@ -6,10 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./save-form-dialog.component.scss'],
 })
 export class SaveFormDialogComponent implements OnInit {
+  @Input() formName: string = '';
   @Output() closeDialog = new EventEmitter<void>();
   @Output() closeDialogWithData = new EventEmitter<string>();
-
-  formName: string = '';
 
   constructor() {}
 
