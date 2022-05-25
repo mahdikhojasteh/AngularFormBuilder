@@ -1,0 +1,10 @@
+<div class="container">
+  <label [for]="fieldModel.field_name + '_id'">{{ fieldModel.label }}</label>
+  <input
+    type="button"
+    [id]="fieldModel.field_name + '_id'"
+    [name]="fieldModel.field_name"
+    [value]="fieldModel.value"
+    (click)="clicked()"
+  />
+</div>

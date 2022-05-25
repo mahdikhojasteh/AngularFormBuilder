@@ -1,0 +1,50 @@
+.switch_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .switch_label {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-right: 0.5rem;
+    &::after {
+      content: ":";
+    }
+  }
+
+  .switch {
+    width: 5rem;
+    height: 3rem;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    background-color: #49454f;
+    border-radius: 2.5rem;
+    border: 0.2rem solid #938f99;
+    transition: border-color 200ms, background-color 200ms;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 1.2rem;
+      background-color: #938f99;
+      transition: width 200ms, height 200ms, transform 200ms,
+        background-color 200ms;
+    }
+
+    &.on {
+      border-color: #d0bcff;
+      background-color: #d0bcff;
+
+      &::before {
+        background-color: #381e72;
+        width: 2.4rem;
+        height: 2.4rem;
+        transform: translateX(1.6rem);
+      }
+    }
+  }
+}

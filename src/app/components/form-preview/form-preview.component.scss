@@ -1,0 +1,93 @@
+@import "src/assets/core/variables";
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 70%;
+    height: 80%;
+    background-color: $navbar-color;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    justify-content: start;
+    align-content: start;
+    justify-items: center;
+    align-items: center;
+
+    &_item {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .selected {
+        color: $navbar-items-color;
+      }
+      svg,
+      i {
+        font-size: 4rem;
+        transition: transform 300ms ease;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.05);
+        }
+      }
+      span {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.btn-delete {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 9rem;
+  padding: 1.2rem 1.35rem;
+  background-color: #960404;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    &:hover {
+      background-color: gray;
+    }
+  }
+  &:hover {
+    background-color: #b90505;
+  }
+  & > * {
+    color: #fff;
+  }
+}
+.btn-edit {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 2rem;
+  padding: 1.2rem;
+  background-color: #045796;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    &:hover {
+      background-color: gray;
+    }
+  }
+  &:hover {
+    background-color: #096fdc;
+  }
+  & > * {
+    color: #fff;
+  }
+}

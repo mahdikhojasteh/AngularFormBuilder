@@ -1,0 +1,182 @@
+@import "src/assets/core/variables";
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  & > * {
+    position: relative;
+    background-color: $navbar-color;
+    height: 90%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 2rem;
+  }
+  &_toolbar {
+    flex-basis: 15%;
+    overflow-y: scroll;
+    &_wrapper::after {
+      content: "Controls";
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    &_wrapper {
+      width: 100%;
+    }
+    &_wrapper > * {
+      position: relative;
+      width: 100%;
+      padding: 2rem 0;
+      cursor: pointer;
+      &:first-child {
+        margin-top: 5rem;
+      }
+      &:hover {
+        background-color: #b1b1b1;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-bottom: 0.1rem solid gray;
+      }
+      span {
+        margin-left: 1rem;
+        font-size: 2rem;
+        user-select: none;
+        svg {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  &_preview {
+    flex-basis: 70%;
+    padding: 0.1rem;
+    position: relative;
+    &::after {
+      content: "Builder";
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    &_wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow-y: scroll;
+
+      & > * {
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        padding: 2rem;
+        font-size: 3rem;
+        &.selected {
+          background-color: #b1b1b1;
+        }
+        &:first-child {
+          margin-top: 3rem;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          border-bottom: 0.1rem dashed gray;
+        }
+      }
+    }
+  }
+}
+
+.btn-delete {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 23rem;
+  padding: 1.2rem 1.35rem;
+  background-color: #960404;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    &:hover {
+      background-color: gray;
+    }
+  }
+  &:hover {
+    background-color: #b90505;
+  }
+  & > * {
+    color: #fff;
+  }
+}
+.btn-edit {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 16rem;
+  padding: 1.2rem;
+  background-color: #045796;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    &:hover {
+      background-color: gray;
+    }
+  }
+  &:hover {
+    background-color: #096fdc;
+  }
+  & > * {
+    color: #fff;
+  }
+}
+.btn-reset {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 9rem;
+  padding: 1.2rem;
+  background-color: #d87408;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &:hover {
+    background-color: #eb5905;
+  }
+  & > * {
+    color: #fff;
+  }
+}
+.btn-save {
+  position: absolute;
+  z-index: 10;
+  top: 1rem;
+  right: 2rem;
+  padding: 1.2rem;
+  background-color: #049e94;
+  box-shadow: 0.4rem 0.4rem 0.5rem rgba(0, 0, 0, 0.75);
+  &:hover {
+    background-color: #07cdc0;
+  }
+  & > * {
+    color: #fff;
+  }
+}

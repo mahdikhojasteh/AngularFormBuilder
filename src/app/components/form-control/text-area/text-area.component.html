@@ -1,0 +1,17 @@
+<div class="container">
+  <label [for]="fieldModel.field_name + '_id'">{{ fieldModel.label }}</label>
+  <textarea
+    type="text"
+    [id]="fieldModel.field_name + '_id'"
+    [name]="fieldModel.field_name"
+    [(ngModel)]="fieldModel.value"
+    #input="ngModel"
+    [required]="fieldModel.isRequired"
+    [ngClass]="{ error: input.invalid && (input.dirty || input.touched) }"
+  ></textarea>
+  <ng-container *ngIf="input.invalid && (input.dirty || input.touched)">
+    <p class="error" *ngIf="input?.errors?.['required']">
+      {{ fieldModel.label }} is required!
+    </p>
+  </ng-container>
+</div>

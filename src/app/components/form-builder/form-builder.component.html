@@ -1,0 +1,159 @@
+<div class="container">
+  <div class="container_toolbar">
+    <div class="container_toolbar_wrapper">
+      <div
+        class="container_toolbar_item--1"
+        (click)="addField(fieldTypeEnum.textbox)"
+      >
+        <span><i class="fa-solid fa-text-size"></i></span> <span>Textbox</span>
+      </div>
+      <div
+        class="container_toolbar_item--2"
+        (click)="addField(fieldTypeEnum.textarea)"
+      >
+        <span><i class="fa-solid fa-align-left"></i></span>
+        <span>Textarea</span>
+      </div>
+      <div
+        class="container_toolbar_item--3"
+        (click)="addField(fieldTypeEnum.button)"
+      >
+        <span><i class="fa-solid fa-mobile-screen-button"></i></span>
+        <span>Button</span>
+      </div>
+      <div
+        class="container_toolbar_item--4"
+        (click)="addField(fieldTypeEnum.select)"
+      >
+        <span><i class="fa-solid fa-square-check"></i></span>
+        <span>Select</span>
+      </div>
+      <div
+        class="container_toolbar_item--5"
+        (click)="addField(fieldTypeEnum.radio)"
+      >
+        <span><i class="fa-solid fa-circle-dot"></i></span> <span>Radio</span>
+      </div>
+      <div
+        class="container_toolbar_item--6"
+        (click)="addField(fieldTypeEnum.datepicker)"
+      >
+        <span><i class="fa-solid fa-calendar-day"></i></span>
+        <span>Datepicker</span>
+      </div>
+      <div
+        class="container_toolbar_item--7"
+        (click)="addField(fieldTypeEnum.checkbox)"
+      >
+        <span><i class="fa-solid fa-check"></i></span>
+        <span>Checkbox</span>
+      </div>
+    </div>
+  </div>
+  <div class="container_preview">
+    <button
+      class="btn btn-circle btn-delete"
+      [ngClass]="{ disabled: !!!selectedField }"
+      (click)="deleteSelected()"
+    >
+      <i class="fa-solid fa-trash"></i>
+    </button>
+    <button
+      class="btn btn-circle btn-edit"
+      [ngClass]="{ disabled: !!!selectedField }"
+      (click)="editSelected()"
+    >
+      <i class="fa-solid fa-edit"></i>
+    </button>
+    <button class="btn btn-circle btn-reset" (click)="reset()">
+      <i class="fa-solid fa-arrow-rotate-right"></i>
+    </button>
+    <button class="btn btn-circle btn-save" (click)="save()">
+      <i class="fa-solid fa-arrow-down-to-arc"></i>
+    </button>
+    <div class="container_preview_wrapper">
+      <ng-container *ngFor="let formField of formModel.form_fields">
+        <ng-container [ngSwitch]="formField.field_type">
+          <div
+            *ngSwitchCase="fieldTypeEnum.textbox"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-text-box [fieldModel]="formField"></app-text-box>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.textarea"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-text-area [fieldModel]="formField"></app-text-area>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.button"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-button [fieldModel]="formField"></app-button>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.select"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-select [fieldModel]="formField"></app-select>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.radio"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-radio [fieldModel]="formField"></app-radio>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.datepicker"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-date-picker [fieldModel]="formField"></app-date-picker>
+          </div>
+          <div
+            *ngSwitchCase="fieldTypeEnum.checkbox"
+            (click)="selectRow(formField)"
+            [ngClass]="{
+              selected: !!selectedField && selectedField.id == formField.id
+            }"
+          >
+            <app-check-box [fieldModel]="formField"></app-check-box>
+          </div>
+          <div *ngSwitchDefault>nothing has beed added!</div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<app-edit-field-dialog
+  *ngIf="selectedField && isForEdit"
+  [formField]="selectedField"
+  (closeDialog)="selectedField = null; isForEdit = false"
+  (closeDialogWithData)="updateField($event)"
+></app-edit-field-dialog>
+
+<app-save-form-dialog
+  *ngIf="isForSave"
+  (closeDialog)="isForSave = false"
+  (closeDialogWithData)="saveAndRedirect($event)"
+>
+</app-save-form-dialog>

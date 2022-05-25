@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/core/variables";
+@import "assets/core/animations";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  transition: all 0.3s;
+}
+
+body {
+  font-family: "Oswald";
+  font-weight: 300;
+}
+
+// ul {
+//   display: block;
+//   list-style-type: disc;
+// }
+
+li {
+  list-style: none;
+}
+
+a {
+  cursor: pointer;
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $base-color;
+    cursor: pointer;
+  }
+}
+
+input[type="button"] {
+  padding: 1rem 2rem;
+  background: #ccc;
+  border: 0 none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.75);
+  transition: transform 30ms;
+  &:active {
+    transform: translateX(0.1rem) translateY(0.1rem);
+    box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.75);
+  }
+}
+
+.btn {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+  & > * {
+    font-size: 3rem;
+  }
+
+  &-circle {
+    border-radius: 50%;
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  & > * {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  label {
+    flex-basis: 15%;
+    position: relative;
+    &::after {
+      content: ":";
+    }
+  }
+  input,
+  input {
+    flex-basis: 60%;
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    flex-basis: 2%;
+  }
+}
+
+.error {
+  color: $error-color;
+}
+
+input.error,
+textarea.error,
+select.error {
+  border: 0.1rem solid $error-color;
+  animation: shake 300ms ease-in-out 100ms;
+}

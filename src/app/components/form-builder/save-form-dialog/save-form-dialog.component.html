@@ -1,0 +1,46 @@
+<div class="dialog_container" (click)="close()">
+  <div class="dialog_form" (click)="$event.stopPropagation()">
+    <form
+      class="dialog_form--items"
+      #f="ngForm"
+      (ngSubmit)="f.form.valid && onRegister()"
+      novalidate
+    >
+      <div class="dialog_form--items-1">
+        <label for="form_name">enter form name:</label>
+        <input
+          id="forn_name"
+          type="text"
+          placeholder="form name"
+          class="form_control"
+          name="fullname"
+          [(ngModel)]="formName"
+          #input="ngModel"
+          required
+          [ngClass]="{ error: input.invalid && (input.dirty || input.touched) }"
+        />
+
+        <div
+          class="error"
+          *ngIf="
+            (input.invalid && (input.dirty || input.touched)) || f.submitted
+          "
+        >
+          <ng-container *ngIf="input.errors?.['required']"
+            >Form name is Mandatory!</ng-container
+          >
+        </div>
+      </div>
+      <div class="dialog_form--items-2">
+        <button
+          class="btn btn--submit"
+          [disabled]="!f.form.valid"
+          [ngClass]="{ disabled: !f.form.valid }"
+        >
+          Save
+        </button>
+        <a class="btn btn--cancel" (click)="close()">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

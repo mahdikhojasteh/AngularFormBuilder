@@ -1,0 +1,39 @@
+<div class="dialog_container" (click)="close()">
+  <div class="dialog_form" (click)="$event.stopPropagation()">
+    <div class="dialog_form_items">
+      <ng-container *ngFor="let formField of editFields">
+        <ng-container [ngSwitch]="formField.field_type">
+          <div *ngSwitchCase="fieldTypeEnum.textbox">
+            <app-text-box [fieldModel]="formField"></app-text-box>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.textarea">
+            <app-text-area [fieldModel]="formField"></app-text-area>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.button">
+            <app-button
+              [fieldModel]="formField"
+              (buttonClicked)="saveOrCancel($event)"
+            ></app-button>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.select">
+            <app-select [fieldModel]="formField"></app-select>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.radio">
+            <app-radio [fieldModel]="formField"></app-radio>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.datepicker">
+            <app-date-picker [fieldModel]="formField"></app-date-picker>
+          </div>
+          <div *ngSwitchCase="fieldTypeEnum.checkbox">
+            <app-rounded-switch
+              [switch_value]="formField.value"
+              [switch_label]="formField.label"
+              (switch_onChange)="formField.value = $event"
+            ></app-rounded-switch>
+          </div>
+          <div *ngSwitchDefault>nothing has beed added!</div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

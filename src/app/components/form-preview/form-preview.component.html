@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <button
+      class="btn btn-circle btn-delete"
+      [ngClass]="{ disabled: !!!selectedFormModel }"
+      (click)="deleteSelected()"
+    >
+      <i class="fa-solid fa-trash"></i>
+    </button>
+    <button
+      class="btn btn-circle btn-edit"
+      [ngClass]="{ disabled: !!!selectedFormModel }"
+      (click)="editSelected()"
+    >
+      <i class="fa-solid fa-edit"></i>
+    </button>
+    <ng-container *ngFor="let item of $formModels | async">
+      <div class="card_item">
+        <span
+          (click)="select(item)"
+          [ngClass]="{ selected: selectedFormModel?.id == item.id }"
+        >
+          <i class="fa-light fa-memo-circle-check"></i>
+        </span>
+        <span>{{ item.form_name }}</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <label [for]="fieldModel.field_name + '_id'">{{ fieldModel.label }}</label>
+  <ng-container *ngFor="let opt of fieldModel.options; let i = index">
+    <p>{{ opt.value }}</p>
+    <input
+      type="checkbox"
+      [id]="fieldModel.field_name + '_id_' + i"
+      [name]="fieldModel.field_name + '_' + i"
+      [checked]="fieldModel.value.includes(opt.key) ? true : false"
+      (change)="checkSelection(opt.key)"
+      [required]="fieldModel.isRequired"
+      style="margin-right: 1rem"
+    />
+    <!-- <ng-container *ngIf="input.invalid && (input.dirty || input.touched)">
+      <p class="error" *ngIf="input?.errors?.['required']">
+        {{ fieldModel.label }} is required!
+      </p>
+    </ng-container> -->
+  </ng-container>
+</div>

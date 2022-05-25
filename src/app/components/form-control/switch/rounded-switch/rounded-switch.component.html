@@ -1,0 +1,10 @@
+<div class="switch_wrapper">
+  <div class="switch_label">
+    {{ switch_label + "(" + (switch_value ? "On" : "Off") + ")" }}
+  </div>
+  <button
+    class="switch"
+    (click)="toggle_switch()"
+    [ngClass]="{ on: switch_value }"
+  ></button>
+</div>
