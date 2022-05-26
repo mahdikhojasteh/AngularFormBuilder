@@ -41,4 +41,4 @@ testem.log
 .DS_Store
 Thumbs.db
 
-src/assets/fontawesome-pro-6.1.1-web
+# src/assets/fontawesome-pro-6.1.1-web
